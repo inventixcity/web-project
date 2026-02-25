@@ -1,0 +1,521 @@
+
+/*  RESET & BASE  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/*  NAVBAR  */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.88);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    height: 44px;
+}
+
+.nav-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 44px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-logo:hover {
+    opacity: 1;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-links li a {
+    font-size: 12px;
+    color: #f5f5f7;
+    opacity: 0.8;
+    padding: 0 10px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    letter-spacing: 0;
+}
+
+.nav-links li a:hover {
+    opacity: 1;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 44px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-icon:hover {
+    opacity: 1;
+}
+
+/* HERO SECTIONS  */
+.hero {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 12px;
+    position: relative;
+    height: 640px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 46px;
+}
+
+.hero-headline {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.07;
+    color: #1d1d1f;
+}
+
+.hero-headline-light {
+    color: #f5f5f7;
+}
+
+.hero-subhead {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.004em;
+    line-height: 1.14;
+    margin-top: 6px;
+    color: #1d1d1f;
+}
+
+.hero-subhead-light {
+    color: #f5f5f7;
+}
+
+.italic-air {
+    font-style: italic;
+}
+
+.hero-cta {
+    margin-top: 10px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* buttons */
+.cta-link {
+    font-size: 17px;
+    line-height: 1; 
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    border-radius: 980px;
+    cursor: pointer;
+    box-sizing: border-box; 
+    padding: 10px 22px 12px; 
+    min-width: 30px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Filled blue button */
+.cta-fill {
+    background-color: #0071e3;
+    color: #fff;
+    border-color: #0071e3;
+}
+
+.cta-fill:hover {
+    background-color: #0077ed;
+    border-color: #0077ed;
+    text-decoration: none;
+}
+
+/* Outline button (light background) */
+.cta-outline {
+    background-color: transparent;
+    color: #06c;
+    border-color: #06c;
+}
+
+.cta-outline:hover {
+    background-color: #06c;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Outline button (dark background) */
+.cta-outline-light {
+    background-color: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.56);
+}
+
+.cta-outline-light:hover {
+    background-color: #fff;
+    color: #1d1d1f;
+    border-color: #fff;
+    text-decoration: none;
+}
+
+/* On dark promo cards, filled button becomes white */
+.promo-dark .cta-fill {
+    background-color: #fff;
+    color: #1d1d1f;
+    border-color: #fff;
+}
+
+.promo-dark .cta-fill:hover {
+    background-color: #f5f5f7;
+    border-color: #f5f5f7;
+}
+
+/* On dark promo cards, outline button */
+.promo-dark .cta-outline-light {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.56);
+}
+
+.promo-dark .cta-outline-light:hover {
+    background-color: #fff;
+    color: #1d1d1f;
+}
+
+/* Hero Images */
+.hero-img-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+/* Individual Hero Backgrounds */
+.hero-iphone {
+    background-color: #f5f5f7;
+}
+
+/* iPad Air: text overlays on the gradient+image */
+.hero-ipad-air {
+    background: linear-gradient(180deg, #f5f5f7 0%, #d2ecf9 50%, #d2ecf9 100%);
+}
+
+.hero-ipad-air .hero-img {
+    object-position: center 70%;
+}
+
+/* MacBook Pro: image centered */
+.hero-macbook-pro {
+    background-color: #000;
+}
+
+.hero-macbook-pro .hero-img {
+    object-position: center 65%;
+}
+
+
+
+/*  PROMO GRID SECTION  */
+.promo-section {
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.promo-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.promo-card {
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.promo-light {
+    background-color: #fff;
+}
+
+.promo-dark {
+    background-color: #000;
+}
+
+.promo-text {
+    padding-top: 36px;
+    z-index: 2;
+    position: relative;
+}
+
+.promo-title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.002em;
+    line-height: 1.1;
+    color: #1d1d1f;
+}
+
+.promo-title-light {
+    color: #f5f5f7;
+}
+
+.promo-subtitle {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.24;
+    margin-top: 6px;
+    color: #6e6e73;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.promo-subtitle-light {
+    color: #86868b;
+}
+
+.promo-cta {
+    margin-top: 10px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo-img-wrap {
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.promo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* ----- FOOTER ----- */
+.site-footer {
+    background-color: #f5f5f7;
+    padding: 16px 0 22px;
+    font-size: 12px;
+    color: #6e6e73;
+    line-height: 1.47;
+}
+
+.footer-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 22px;
+}
+
+.footer-notes {
+    margin-bottom: 16px;
+}
+
+.footer-notes ol {
+    list-style: decimal inside;
+    margin-bottom: 12px;
+}
+
+.footer-notes li,
+.footer-notes p {
+    margin-bottom: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #6e6e73;
+}
+
+.footer-rule {
+    border: none;
+    height: 1px;
+    background-color: #d2d2d7;
+    margin: 12px 0;
+}
+
+/* Footer Directory */
+.footer-directory {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0 30px;
+}
+
+.footer-heading {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 6px;
+}
+
+.footer-heading-spaced {
+    margin-top: 18px;
+}
+
+.footer-list li {
+    margin-bottom: 2px;
+}
+
+.footer-list li a {
+    color: #424245;
+    font-size: 12px;
+    line-height: 1.6;
+    transition: color 0.2s;
+}
+
+.footer-list li a:hover {
+    color: #1d1d1f;
+    text-decoration: underline;
+}
+
+/* Footer Shop */
+.footer-shop p {
+    font-size: 12px;
+    color: #6e6e73;
+}
+
+.footer-shop a {
+    color: #0066cc;
+}
+
+.footer-shop a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Legal */
+.footer-legal {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #6e6e73;
+    margin-right: auto;
+}
+
+.footer-legal-links {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.footer-legal-links li {
+    padding: 0 10px;
+    border-right: 1px solid #d2d2d7;
+}
+
+.footer-legal-links li:last-child {
+    border-right: none;
+}
+
+.footer-legal-links li a {
+    font-size: 12px;
+    color: #424245;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.footer-legal-links li a:hover {
+    color: #1d1d1f;
+    text-decoration: underline;
+}
+
+.footer-locale {
+    font-size: 12px;
+    color: #424245;
+    margin-left: 10px;
+}
+
+.footer-locale:hover {
+    color: #1d1d1f;
+    text-decoration: underline;
+}
+
+sup {
+    font-size: 0.65em;
+    vertical-align: super;
+}
