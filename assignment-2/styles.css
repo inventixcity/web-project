@@ -786,7 +786,7 @@ sup {
    RESPONSIVE — HERO, PROMO, FOOTER
       = */
 
-/*  Tablet   ───── */
+/*  Tablet  */
 @media (max-width: 1024px) {
     .hero { height: 580px; }
     .hero-headline { font-size: 48px; }

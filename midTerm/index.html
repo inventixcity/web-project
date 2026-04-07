@@ -568,6 +568,33 @@
 
     </section>
 
+    <!--   FEATURED DEALS (AJAX)   -->
+    <section class="deals-section">
+        <h2 class="deals-heading">Featured Deals</h2>
+        <div id="deals-container" class="deals-grid">
+            <p class="deals-loading">Loading deals&hellip;</p>
+        </div>
+    </section>
+
+    <!--   QUICK VIEW MODAL   -->
+    <div id="quick-view-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-img-wrap">
+                    <img id="modal-img" src="" alt="Product image" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x300?text=Product+Image';">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modal-title"></h3>
+                    <p id="modal-category" class="modal-category"></p>
+                    <p id="modal-price" class="modal-price"></p>
+                    <p id="modal-rating" class="modal-rating"></p>
+                    <p id="modal-desc" class="modal-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--   FOOTER   -->
     <footer class="site-footer">
         <div class="footer-container">
@@ -823,6 +850,11 @@
         });
     }());
     </script>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Featured Deals AJAX logic -->
+    <script src="app.js"></script>
 
 </body>
 </html>
