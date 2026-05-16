@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Apple</title>
+    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo" aria-label="Apple">
+                <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                    <path class="logo-path" d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7502 3.0365 3.5132 3.5132 0 0 0 2.1404 3.2154 8.394 8.394 0 0 1 -1.0948 2.2071c-.6392.9538-1.3139 1.9081-2.3726 1.9081s-1.3044-.6106-2.4923-.6106c-1.1585 0-1.5733.6327-2.5581.6327s-1.6476-.8852-2.3977-1.9648a9.7968 9.7968 0 0 1 -1.5927-5.2069 4.2569 4.2569 0 0 1 3.9855-4.5745 3.517 3.517 0 0 1 2.5315 1.0295c.3867.3538.8867.5381 1.4035.5176a2.7659 2.7659 0 0 0 1.6823-.6327 3.5672 3.5672 0 0 1 2.4285-.868zm-3.1441-2.7127a3.462 3.462 0 0 0 .8053-2.3843 3.58 3.58 0 0 0 -2.3339 1.2108 3.3573 3.3573 0 0 0 -.8468 2.3252 2.9653 2.9653 0 0 0 2.3754-1.1517z"/>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/products" class="nav-link">Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="shop-hero">
+        <h1 class="shop-title">Store.</h1>
+        <p class="shop-subtitle">The best way to shop the products you love.</p>
+    </section>
+
+    <section class="shop-section">
+        <div class="shop-layout">
+
+            <aside class="filter-sidebar">
+                <form action="/products" method="GET" class="filter-form">
+
+                    <div class="filter-group">
+                        <h3 class="filter-heading">Search</h3>
+                        <input type="text" name="search" value="<%= search %>" placeholder="Search products" class="filter-input">
+                    </div>
+
+                    <div class="filter-group">
+                        <h3 class="filter-heading">Category</h3>
+                        <label class="filter-radio">
+                            <input type="radio" name="category" value="" <%= selectedCategory === '' ? 'checked' : '' %>>
+                            <span>All</span>
+                        </label>
+                        <% categories.forEach(function(cat) { %>
+                            <label class="filter-radio">
+                                <input type="radio" name="category" value="<%= cat %>" <%= selectedCategory === cat ? 'checked' : '' %>>
+                                <span><%= cat %></span>
+                            </label>
+                        <% }); %>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3 class="filter-heading">Price</h3>
+                        <div class="price-row">
+                            <input type="number" name="minPrice" value="<%= minPrice %>" placeholder="Min" class="filter-input filter-input-small">
+                            <input type="number" name="maxPrice" value="<%= maxPrice %>" placeholder="Max" class="filter-input filter-input-small">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="filter-btn">Apply Filters</button>
+                    <a href="/products" class="filter-clear">Clear All</a>
+
+                </form>
+            </aside>
+
+            <div class="product-area">
+
+                <div class="result-bar">
+                    <p class="result-count"><%= totalProducts %> products found</p>
+                </div>
+
+                <% if (products.length === 0) { %>
+                    <div class="no-results">
+                        <p>No products match your filters.</p>
+                        <a href="/products" class="cta-link cta-fill">Reset</a>
+                    </div>
+                <% } else { %>
+                    <div class="product-grid">
+                        <% products.forEach(function(product) { %>
+                            <div class="product-card">
+                                <% if (product.image) { %>
+                                    <div class="product-img-wrap">
+                                        <img src="<%= product.image %>" alt="<%= product.name %>" class="product-img">
+                                    </div>
+                                <% } %>
+                                <p class="product-tag"><%= product.category %></p>
+                                <h2 class="product-name"><%= product.name %></h2>
+                                <p class="product-rating">Rating: <%= product.rating %> / 5</p>
+                                <p class="product-price">From $<%= product.price %></p>
+                                <p class="product-stock">
+                                    <% if (product.stock > 0) { %>
+                                        In stock (<%= product.stock %>)
+                                    <% } else { %>
+                                        Out of stock
+                                    <% } %>
+                                </p>
+                                <a href="#" class="cta-link cta-fill">Buy</a>
+                            </div>
+                        <% }); %>
+                    </div>
+
+                    <div class="pagination">
+                        <%
+                            const buildLink = function(p) {
+                                let q = '?page=' + p;
+                                if (search) q += '&search=' + encodeURIComponent(search);
+                                if (selectedCategory) q += '&category=' + encodeURIComponent(selectedCategory);
+                                if (minPrice) q += '&minPrice=' + minPrice;
+                                if (maxPrice) q += '&maxPrice=' + maxPrice;
+                                return q;
+                            };
+                        %>
+
+                        <% if (currentPage > 1) { %>
+                            <a href="<%= buildLink(currentPage - 1) %>" class="page-link">Previous</a>
+                        <% } else { %>
+                            <span class="page-link page-disabled">Previous</span>
+                        <% } %>
+
+                        <% for (let i = 1; i <= totalPages; i++) { %>
+                            <% if (i === currentPage) { %>
+                                <span class="page-link page-active"><%= i %></span>
+                            <% } else { %>
+                                <a href="<%= buildLink(i) %>" class="page-link"><%= i %></a>
+                            <% } %>
+                        <% } %>
+
+                        <% if (currentPage < totalPages) { %>
+                            <a href="<%= buildLink(currentPage + 1) %>" class="page-link">Next</a>
+                        <% } else { %>
+                            <span class="page-link page-disabled">Next</span>
+                        <% } %>
+                    </div>
+                <% } %>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-shop">
+                <p>More ways to shop: <a href="#">Find an Apple Store</a> or <a href="#">other retailer</a> near you. Or call 1-800-MY-APPLE.</p>
+            </div>
+            <hr class="footer-rule">
+            <div class="footer-legal">
+                <span class="footer-copyright">Copyright &copy; 2026 Apple Inc. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/secret.js"></script>
+</body>
+</html>
